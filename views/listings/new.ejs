@@ -1,0 +1,208 @@
+<!-- <% layout("/layouts/boilerplate") %>
+<div class="row mt-3">
+    <div class="col-8 offset-2" >
+        <br/> <br/>
+<h3>create a new listing</h3>
+<form method="POST" action="/listings" novalidate class ="needs-validation">
+  <div class="mb-3">
+    <label for="title" class="form-label"> Enter Title </label>
+    <input
+      name="listing[title]"
+      placeholder="enter title"
+      type="text"
+      class="form-control"
+      required
+    />
+  </div>
+  
+
+  <div class="mb-3">
+    <label for="description" class="form-label" novalidate class ="needs-validation"> Description </label>
+    <textarea
+      name="listing[description]"
+      placeholder="enter description"
+      class="form-control"
+      required
+    ></textarea>
+  </div>
+  
+
+  <div class="mb-3"> 
+    <label for="image" class="form-label"> Image Link </label>
+    <input
+      name="listing[image]"
+      placeholder="enter image URL/Link"
+      type="text"
+      class="form-control"
+    />
+  </div>
+  
+   <div class="row">
+    <div class="mb-3 col-md-4">
+        <label for="price" class="form-label" novalidate class ="needs-validation"> Enter the price</label>
+        <input
+          name="listing[price]"
+          placeholder="enter price"
+          type="number"
+          class="form-control"
+          required
+        />
+      </div>
+
+      <div class="mb-3 col-md-8">
+        <label for="country" class="form-label" novalidate class ="needs-validation"> Write the country name</label>
+        <input
+          name="listing[country]"
+          placeholder="enter country"
+          type="text"
+          class="form-control"
+          required
+        />
+       
+      </div>
+   </div>
+ 
+  
+
+  <div class="mb-3">
+    <label for="location" class="form-label" novalidate class ="needs-validation"> Enter Location</label>
+    <input
+      name="listing[location]"
+      placeholder="enter location"
+      type="text"
+      class="form-control"
+      required
+    />
+  </div>
+  
+  <button class="btn btn-dark add-btn mt-3">Add</button>
+</form>
+</div>
+</div> -->
+
+<% layout("/layouts/boilerplate") %>
+<div class="row mt-3">
+    <div class="col-8 offset-2">
+        <br/><br/>
+        <h3>Create a New Listing</h3>
+        <form method="POST" action="/listings" novalidate class="needs-validation" id="listingForm" enctype="multipart/form-data">
+            <div class="mb-3">
+                <label for="title" class="form-label">Enter Title</label>
+                <input
+                    name="listing[title]"
+                    id="title"
+                    placeholder="Enter Title"
+                    type="text"
+                    class="form-control"
+                    required
+                />
+                <div class="valid-feedback">Title looks good!.</div>
+                <div class="invalid-feedback"> Title is required!</div>
+            </div>
+            
+            <div class="mb-3">
+                <label for="description" class="form-label">Description</label>
+                <textarea
+                    name="listing[description]"
+                    id="description"
+                    placeholder="Enter Description"
+                    class="form-control"
+                    required
+                ></textarea>
+                <div class="invalid-feedback">Please enter a short description.</div>
+                <div class="valid-feedback">Description looks nice !</div>
+            </div>
+            
+            <!-- <div class="mb-3"> 
+                <label for="image" class="form-label">Image Link</label>
+                <input
+                    name="listing[image]"
+                    id="image"
+                    placeholder="Enter Image URL/Link"
+                    type="text"
+                    class="form-control"
+                />
+                <div class="invalid-feedback">Please enter an image link (optional).</div>
+            </div> -->
+
+            <div class="mb-3"> 
+              <label for="image" class="form-label">Upload Image</label>
+              <input
+                  name="listing[image]"
+                  id="image"
+                  type="file"
+                  class="form-control"
+              />
+              <div class="invalid-feedback">Please enter an image link (optional).</div>
+          </div>
+            
+            <div class="row">
+                <div class="mb-3 col-md-4">
+                    <label for="price" class="form-label">Enter the Price</label>
+                    <input
+                        name="listing[price]"
+                        id="price"
+                        placeholder="Enter Price"
+                        
+                        class="form-control"
+                        required
+                    />
+                    <div class="invalid-feedback">Please enter a valid price.</div>
+                    <div class="valid-feedback">Price looks reasonable!.</div>
+                </div>
+
+                <div class="mb-3 col-md-8">
+                    <label for="country" class="form-label">Write the Country Name</label>
+                    <input
+                        name="listing[country]"
+                        id="country"
+                        placeholder="Enter Country"
+                        type="text"
+                        class="form-control"
+                        required
+                    />
+                    <div class="invalid-feedback">Please enter a country name.</div>
+                    <div class="valid-feedback">Country name looks good! </div>
+                </div>
+            </div>
+ 
+            <div class="mb-3">
+                <label for="location" class="form-label">Enter Location</label>
+                <input
+                    name="listing[location]"
+                    id="location"
+                    placeholder="Enter Location"
+                    type="text"
+                    class="form-control"
+                    required
+                />
+                <div class="invalid-feedback">Please enter a location.</div>
+                <div class="valid-feedback">Location seems interesting !!</div>
+            </div>
+            
+            <button class="btn btn-dark add-btn mt-3" type="submit">Add</button>
+        </form>
+    </div>
+</div>
+
+<script>
+// Example validation script
+(function () {
+    'use strict'
+
+    // Fetch all the forms we want to apply Bootstrap validation styles to
+    var forms = document.querySelectorAll('.needs-validation')
+
+    // Loop over them and prevent submission
+    Array.prototype.slice.call(forms)
+        .forEach(function (form) {
+            form.addEventListener('submit', function (event) {
+                if (!form.checkValidity()) {
+                    event.preventDefault()
+                    event.stopPropagation()
+                }
+                form.classList.add('was-validated')
+            }, false)
+        })
+})()
+</script>
